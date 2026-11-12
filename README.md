@@ -52,7 +52,6 @@ The dataset contains aggregated monthly patronage figures rather than individual
 |---|---|
 | Python | Data inspection, preparation and analysis |
 | Google Colab / Jupyter Notebook | Exploratory data analysis and documentation |
-| Pandas | Data manipulation and preparation |
 | SQL / DuckDB | Querying and analysing structured data, where applicable |
 | Power Query | Data transformation in Power BI |
 | Power BI | Interactive dashboard development |
