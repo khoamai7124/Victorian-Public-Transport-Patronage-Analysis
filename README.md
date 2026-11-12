@@ -2,30 +2,39 @@
 
 ## 1. Project Overview
 
-This project explores monthly public transport patronage across Victoria from January 2018 to June 2026. The aim was to understand how public transport usage has changed over time, which transport modes account for the largest share of recorded patronage, and how demand has changed from month to month and year to year.
+This project analyses monthly public transport patronage across Victoria from January 2018 to June 2026.
 
-I used Python in Google Colab to work with and inspect the dataset, then Power BI to build an interactive dashboard and communicate the findings.
+The aim is to understand historical public transport demand, identify changes in patronage across different transport modes, and explore patterns that may be useful for transport planning and operational decision-making.
 
-The project follows an end-to-end analytics process, from preparing the data to identifying patterns and presenting information that could support transport planning and operational decisions.
+I approached this project in two stages:
 
-## 2. Business Questions
+- **Python / Jupyter Notebook (Google Colab):** Used for exploratory data analysis, investigating different analytical questions and understanding patterns in the dataset.
+- **Power BI:** Using a clean dataset created from Jupyter Notebook to develop an interactive reporting dashboard that presents selected findings through KPIs, visualisations and business insights.
 
-The analysis focuses on the following questions:
+Although both tools use the same underlying dataset, they serve different purposes. The notebook focuses on exploring the data in greater depth, while the Power BI dashboard focuses on communicating the most relevant information clearly to a business audience.
+
+## 2. Business Context and Analytical Questions
+
+Public transport patronage data can help provide an understanding of how demand changes over time and how usage is distributed across transport modes.
+
+This project explores the following broader questions:
 
 - How has public transport patronage changed over time?
-- Which transport modes account for the largest share of total patronage?
-- How does patronage change month to month (MoM)?
-- How does patronage compare with the same month in the previous year (YoY)?
-- Which months experienced the largest increases or decreases in patronage?
-- What should transport planners and operational teams pay attention to when monitoring demand?
+- Which transport modes account for the largest share of recorded patronage?
+- Are there noticeable seasonal or historical patterns in demand?
+- How has patronage changed compared with previous months and years?
+- Which periods experienced unusually large increases or decreases?
+- What do these patterns suggest for ongoing demand monitoring?
+
+These questions provide the overall direction of the project. They are explored in more detail in the notebook and translated into a more focused reporting dashboard in Power BI.
 
 ## 3. Dataset
 
 The dataset contains monthly public transport patronage figures for six transport modes in Victoria.
 
-**Dataset coverage:** January 2018 – June 2026
+**Reporting period:** January 2018 – June 2026
 
-**Transport modes included:**
+**Transport modes:**
 - Metropolitan train
 - Metropolitan tram
 - Metropolitan bus
@@ -33,140 +42,137 @@ The dataset contains monthly public transport patronage figures for six transpor
 - V/Line coach
 - Regional bus
 
-**Data source:** [Insert the original dataset source and link]
+**Data source:** [Monthly public transport patronage by mode](https://opendata.transport.vic.gov.au/dataset/1ab35aa9-f21d-4f00-939b-60dade427d45/resource/07141b34-08f7-430e-bf83-99e9462cc59f/download/monthly_public_transport_patronage_by_mode.csv)
 
-The data represents recorded monthly patronage. It does not provide individual passenger-level information or direct measurements of overcrowding, delays or service capacity.
+The dataset contains aggregated monthly patronage figures rather than individual passenger-level records.
 
 ## 4. Tools and Technologies
 
 | Tool | Purpose |
 |---|---|
-| Python | Data inspection and preparation |
-| Google Colab | Writing and running Python code |
-| Pandas | Working with and checking the dataset |
-| Power Query | Reshaping and preparing data for reporting |
-| Power BI | Data modelling, DAX calculations and dashboard development |
-| DAX | Calculating patronage and growth measures |
+| Python | Data inspection, preparation and analysis |
+| Google Colab / Jupyter Notebook | Exploratory data analysis and documentation |
+| Pandas | Data manipulation and preparation |
+| SQL / DuckDB | Querying and analysing structured data, where applicable |
+| Power Query | Data transformation in Power BI |
+| Power BI | Interactive dashboard development |
+| DAX | KPI and time-based calculations |
 
 ## 5. Project Workflow
 
-### Step 1: Data Inspection and Preparation – Google Colab
+### Part A: Exploratory Data Analysis – Python / Jupyter Notebook
 
-I used Google Colab to work with the dataset before building the dashboard.
+**Purpose: Explore the dataset and investigate analytical questions in greater depth.**
 
-The Python notebook covers:
-- Importing the dataset and reviewing its structure.
-- Inspecting column names, data types and date information.
-- Checking for missing values and duplicate records.
-- Preparing the data for further analysis.
-- Reviewing patronage patterns across the reporting period.
+I used Google Colab to inspect, prepare and analyse the dataset before developing the Power BI dashboard.
 
-The prepared dataset was then used as the input for the Power BI report.
+The notebook focuses on exploratory analysis, including:
 
-**Notebook:** [View Google Colab Notebook](INSERT_COLAB_LINK)
+- Reviewing the dataset structure, variables and data types.
+- Checking data quality and preparing the data for analysis.
+- Exploring historical patronage trends.
+- Comparing patronage across different transport modes.
+- Investigating month-on-month and year-on-year changes.
+- Examining recovery patterns compared with 2019.
+- Exploring seasonality and variations in demand.
+- Identifying periods with unusually large changes in patronage.
 
-### Step 2: Data Transformation – Power Query
+The notebook provides a more detailed analytical view of the dataset. It allows different questions and patterns to be investigated without restricting the analysis to the visualisations selected for the final dashboard.
 
-After importing the prepared CSV file into Power BI, I used Power Query to reshape the dataset.
+**Notebook:** [Victorian-Public-Transport-Patronage-Analysis.ipynb](https://colab.research.google.com/drive/11rRv1W9oAcKvkMXeEpFyd1CJphF4nZQu?usp=sharing)
 
-The six transport mode columns were converted into two columns:
-- `Transport Mode`
-- `Patronage`
+### Part B: Interactive Business Reporting – Power BI
 
-I also created a `Month Start` date column to support monthly reporting and time-based calculations.
+**Purpose: Present selected findings in a clear and interactive format for business users.**
 
-This structure made it easier to compare transport modes and analyse patronage across different months.
+After exploring the dataset, I developed a two-page Power BI dashboard to communicate the most relevant performance indicators and demand trends.
 
-### Step 3: Data Modelling and DAX – Power BI
-
-I created a separate Calendar table and connected it to the patronage data through the monthly date column.
-
-I then developed DAX measures to calculate:
-
-- Total Patronage
-- Average Monthly Patronage
-- Previous Month Patronage
-- Month-on-Month (MoM) Change
-- MoM Growth (%)
-- Previous Year Patronage
-- Year-on-Year (YoY) Change
-- YoY Growth (%)
-- Latest Month Patronage
-- Latest Month YoY Growth (%)
-
-These calculations allowed the dashboard to show both overall demand and changes in patronage over time.
-
-### Step 4: Dashboard Development – Power BI
-
-I designed a two-page interactive dashboard.
+Unlike the notebook, the dashboard does not attempt to reproduce every exploratory analysis. Instead, it focuses on information that would be useful for monitoring patronage performance and understanding changes in demand.
 
 **Page 1: Executive Overview**
 
-This page provides a high-level summary of public transport patronage, including:
+This page provides a high-level summary of public transport patronage through:
+
 - Total recorded patronage.
 - Average monthly patronage.
 - Latest month's patronage.
-- Latest month's YoY growth.
-- Monthly patronage trend.
-- Patronage distribution by transport mode.
+- Latest month's year-on-year growth.
+- Monthly patronage trends.
+- Patronage distribution across transport modes.
 
 **Page 2: Demand Trends & Growth Analysis**
 
-This page focuses on changes in demand over time, including:
-- Monthly patronage growth (MoM).
-- Year-on-year patronage growth (YoY).
-- Months with the largest absolute MoM movements.
-- Key business insights and management considerations.
+This page provides a closer look at changes in patronage through:
 
-The report also includes Year and Transport Mode filters so users can explore different periods and transport categories.
+- Month-on-month (MoM) growth.
+- Year-on-year (YoY) growth.
+- Months with the largest absolute monthly movements.
+- Key business insights.
+- Management considerations.
+
+The dashboard also includes Year and Transport Mode filters, allowing users to explore patronage across different reporting periods and transport categories.
+
+### How the Two Components Work Together
+
+The notebook and Power BI dashboard are complementary parts of the same project.
+
+| Aspect | Python / Jupyter Notebook | Power BI |
+|---|---|---|
+| Main purpose | Explore and investigate the data | Communicate findings |
+| Focus | Broader analytical questions | Selected business performance indicators |
+| Approach | Detailed, exploratory analysis | Structured, interactive reporting |
+| Output | Code, analysis and exploratory visualisations | Two-page interactive dashboard |
+| Intended audience | Analysts and technical reviewers | Business users and decision-makers |
+
+The notebook helps develop an understanding of the dataset and identify meaningful patterns. Power BI then turns selected findings into a more accessible reporting format.
+
+The two outputs are not intended to contain identical questions or visualisations. However, they use the same underlying dataset and consistent definitions wherever the same measures are reported.
 
 ## 6. Key Findings
 
-The analysis produced several notable findings:
+The analysis identified several notable patterns:
 
 **1. Metropolitan train and tram account for most recorded patronage.**
 
-Metropolitan train represented approximately 38.6% of total recorded patronage, followed by metropolitan tram at approximately 32.0%. Metropolitan bus accounted for another 22.4%.
+Metropolitan train represents approximately 38.6% of total recorded patronage, followed by metropolitan tram at approximately 32.0%. Metropolitan bus accounts for another 22.4%.
 
 **2. Patronage experienced a substantial decline during 2020.**
 
-The monthly trend shows a sharp reduction in recorded patronage during 2020, followed by a gradual recovery over the following years.
+The historical trend shows a sharp reduction in recorded patronage during 2020, followed by a gradual recovery over subsequent years.
 
-**3. Patronage increased in the first half of 2026.**
+**3. Patronage increased during the first half of 2026.**
 
-Total patronage from January to June 2026 was approximately 8.98% higher than the corresponding period in 2025.
+Total patronage from January to June 2026 was approximately 8.98% higher than during the corresponding period in 2025.
 
 **4. Some months experienced unusually large changes.**
 
-November 2021 recorded an MoM increase of approximately 102.57%, while April 2020 recorded a decrease of approximately 83.33%.
+November 2021 recorded a month-on-month increase of approximately 102.57%, while April 2020 recorded a decrease of approximately 83.33%.
 
-These movements are worth further investigation rather than being automatically treated as errors or evidence of operational problems.
+These movements are worth further investigation. They should not automatically be treated as data errors or evidence of operational problems.
 
 ## 7. Business Implications
 
-The findings may help transport planning and operational teams:
+The findings provide several areas that transport planning and operational teams could monitor:
 
-- Monitor demand across metropolitan and regional transport modes.
-- Identify periods with substantial changes in recorded patronage.
-- Compare demand across equivalent reporting periods.
-- Use historical trends as a starting point for further service planning and resource allocation analysis.
+- Track patronage trends across metropolitan and regional transport modes.
+- Identify periods with substantial changes in recorded demand.
+- Compare performance across equivalent reporting periods.
+- Use historical patronage patterns as a starting point for further demand and service planning analysis.
 
-However, patronage figures alone are not sufficient to determine whether services are overcrowded or whether additional capacity is required. Further information, such as service frequency, passenger distribution and capacity data, would be needed to make those decisions.
+However, monthly patronage figures alone cannot determine whether services are overcrowded or whether additional capacity is required. Further information, such as service frequency, passenger distribution and service capacity, would be needed to support those decisions.
 
-## 8. Limitations
+## 8. Data Limitations
 
-There are several limitations to consider:
+Several limitations should be considered when interpreting the results:
 
 - The dataset contains aggregated monthly patronage rather than individual passenger journeys.
-- It does not include information about service delays, overcrowding, passenger distribution or service capacity.
-- Large percentage changes may be influenced by unusually low patronage in the comparison period.
-- Data for 2026 only covers January to June, so it should not be compared directly with complete calendar years.
+- It does not include direct measurements of overcrowding, service delays or passenger distribution.
+- Large percentage movements may be influenced by unusually low patronage in the comparison period.
+- The 2026 data only covers January to June, so it should not be compared directly with complete calendar years.
 
-These limitations are important when interpreting the results and considering possible business actions.
+These limitations are important when interpreting the findings and considering possible business actions.
 
-## 9. Project Files
-
-The repository is organised as follows:
+## 9. Repository Structure
 
 ```text
 victorian-public-transport-analysis/
@@ -175,14 +181,13 @@ victorian-public-transport-analysis/
 │   └── public_transport_clean.csv
 │
 ├── notebooks/
-│   └── public_transport_analysis.ipynb
+│   └── victorian_public_transport_patronage_analysis.ipynb
 │
 ├── powerbi/
 │   └── public_transport_dashboard.pbix
 │
 ├── screenshots/
-│   ├── executive_overview.png
-│   └── demand_trends_growth.png
+│   └── dashboard_screenshots.pdf
 │
 ├── documentation/
 │   └── data_dictionary.md
@@ -192,16 +197,12 @@ victorian-public-transport-analysis/
 
 ## 10. Conclusion and Learning Outcomes
 
-This project gave me the opportunity to apply Python, data preparation, data modelling, DAX and Power BI visualisation to a real-world public transport dataset.
-
-Beyond creating charts, I focused on understanding the patterns in the data and presenting the findings in a way that could be understood by non-technical audiences.
-
-Through this project, I strengthened my ability to work through an analytics task from the initial dataset to a final interactive report, while considering the limitations of the data and the business context behind the results.
+This project gave me the opportunity to apply data analytics techniques on a real-world public transport dataset, from initial data exploration to interactive business reporting. I used Python and Jupyter Notebook to explore different aspects of patronage and to explore trends beyond the final dashboard. I then used Power BI to select and communicate the relevant findings through performance indicators, trend analysis and business insights. The project enhanced my practical experience in data preparation, exploratory analysis, time-based calculations, data visualisation and communication in business. It also highlighted the need to consider data limitations when translating analytical findings into business recommendations.
 
 ---
 
-**Author:** [Your Name]
+**Author:** Anh Khoa Mai
 
-**Tools:** Python | Google Colab | Pandas | Power Query | Power BI | DAX
+**Project area:** Business Analytics | Public Transport | Demand Analysis
 
-**Project type:** Business Analytics / Data Analysis
+**Tools:** Python | Google Colab | Pandas | SQL / DuckDB | Power Query | Power BI | DAX
